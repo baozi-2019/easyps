@@ -1,0 +1,15 @@
+2020-09-05 09:55:18.946  INFO 1800 --- [main] com.baozi.easyps.EasypsApplication       : Starting EasypsApplication on LAPTOP-0H7KP2CT with PID 1800 (E:\workspace\SpringBoot\easyps\target\classes started by lenovo in E:\workspace\SpringBoot\easyps)
+2020-09-05 09:55:18.973  INFO 1800 --- [main] com.baozi.easyps.EasypsApplication       : No active profile set, falling back to default profiles: default
+2020-09-05 09:55:20.880  INFO 1800 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 81 (http)
+2020-09-05 09:55:20.892  INFO 1800 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-09-05 09:55:20.892  INFO 1800 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-09-05 09:55:21.521  INFO 1800 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-09-05 09:55:21.521  INFO 1800 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2494 ms
+2020-09-05 09:55:22.188  INFO 1800 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService
+2020-09-05 09:55:22.190  INFO 1800 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'sendMailPoolTaskExecutor'
+2020-09-05 09:55:22.783  INFO 1800 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 81 (http) with context path ''
+2020-09-05 09:55:22.792  INFO 1800 --- [main] com.baozi.easyps.EasypsApplication       : Started EasypsApplication in 4.951 seconds (JVM running for 7.37)
+2020-09-05 09:55:59.123  INFO 1800 --- [http-nio-81-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-05 09:55:59.123  INFO 1800 --- [http-nio-81-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-09-05 09:55:59.129  INFO 1800 --- [http-nio-81-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2020-09-05 09:57:37.947  INFO 1800 --- [http-nio-81-exec-3] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1,root} inited

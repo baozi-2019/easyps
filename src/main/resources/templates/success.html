@@ -1,0 +1,46 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>欢迎</title>
+    <link type="text/css" th:href="@{/css/login.css}" rel="stylesheet" />
+</head>
+<script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var cookies = document.cookie.split(';');
+        var userName = null;
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            var co = cookie.split('=');
+            if ("userName" == co[0]) {
+                userName = co[1];
+                alert("欢迎！！" + userName);
+            }
+        }
+        if (userName === null)
+            window.location.href="/fail";
+    });
+</script>
+<body>
+<div>
+    <div class="loginBox">
+        <div class="loginText">
+            <form action="uploadFile" method="post" enctype="multipart/form-data">
+                <table align="center">
+                    <tr>
+                        <td colspan="2"><input type="file" name="photo"><br></td>
+                    </tr>
+                    <tr>
+                        <td><textarea style="resize:none;" rows="7" cols="40" name="content" placeholder="请输入内容"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="submit" id="submit" value="确认"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>下载</title>
+    <link rel="stylesheet" type="text/css" href="./css/login.css">
+</head>
+<body>
+    <div class="loginBox">
+        <!--<p th:text="${#request.getAttribute('fileAbsolutePath')}"></p>-->
+        <div class="loginText">
+           <button id="down" onclick="download()">下载</button><br><br>
+            <a href="/success">继续制作</a>
+        </div>
+    </div>
+</body>
+    <script type="text/javascript" th:src="@{webjars/jquery/3.4.1/jquery.js}"></script>
+    <script type="text/javascript">
+        function download() {
+            window.location.href="/down";
+        }
+    </script>
+</html>

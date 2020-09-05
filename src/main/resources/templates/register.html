@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link type="text/css" th:href="@{/css/login.css}" rel="stylesheet"/>
+</head>
+<body>
+    <div class="loginBox" id="outline">
+        <div class="loginText">
+            <form action="/reg/registerCheck" method="post" onsubmit="return isEmpty(this)">
+                <table align="center">
+                    <tr>
+                        <td>[(#{login.username})]:</td>
+                        <td><input type="text" name="userName" id="userName" th:placeholder="#{login.username}"></td>
+                    </tr>
+                    <tr>
+                        <td>[(#{login.password})]:</td>
+                        <td><input type="password" name="userPassword" id="userPassword" th:placeholder="#{login.password}"></td>
+                    </tr>
+                    <tr>
+                        <td>[(#{register.email})]:</td>
+                        <td><input type="email" name="userEmail" id="userEmail" th:placeholder="#{register.email}"></td>
+                        <td><button type="button" id="send" onclick="sendEmail()" value="发送邮件">发送验证邮件</button></td>
+                    </tr>
+                    <tr>
+                        <td>[(#{register.checkCode})]:</td>
+                        <td><input type="text" maxlength="4" id="checkCode" name="checkCode" th:placeholder="#{register.checkCode}"></td>
+                    </tr>
+                    <tr>
+                        <td>[(#{register.age})]:</td>
+                        <td><input type="number" style="width: 155px; height: 18px" max="150" min="1" step="1" name="userAge" id="userAge" th:placeholder="#{register.age}"></td>
+                    </tr>
+                    <tr>
+                        <td><input style="height: 2em; width: 5em" type="reset" th:value="#{register.reset}"></td>
+                        <td><input type="submit" id="submit" th:value="#{register.update}"></td>
+                    </tr>
+                </table>
+            </form>
+            <a href="/login">返回登陆</a>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+<script type="text/javascript">
+    function isEmpty(form) {
+        for (i = 0; i < form.length; i++) {
+            console.log(form.elements[i].value);
+        }
+        for (i = 0; i < form.length; i++){
+            if(form.elements[i].value == "") {
+                alert("亲：" + form.elements[i].placeholder + "不能为空");
+                form.elements[i].focus();
+                return false;
+            }
+        }
+    }
+    function fn(){
+        waitSecond--;
+        if(waitSecond >= 0){
+            $("#send").text(waitSecond +"s后重试");
+            setTimeout(fn,1000);
+        }else{
+            $("#send").attr("disabled",false);
+            $("#send").text("重新发送");
+        }
+    }
+    function sendEmail() {
+        var email = $("#userEmail").val();
+        var name = $("#userName").val();
+        $.ajax({
+            type: "POST",
+            url: "/reg/sendEmail",
+            data: {"email":email, "name":name},
+            dataType: "json",
+            success: function (result, testStatus) {
+                $("#send").attr("disabled",true);
+                if (result.errorStuts !== undefined) {
+                    alert(result.errorStuts);
+                    $("#send").attr("disabled",false);
+                    return;
+                }
+                waitSecond = 5;
+                var timer = setTimeout(fn,1000);
+            },
+            error:function(xhr, errorMessage, e){
+                alert("系统异常！！");
+            }
+        });
+    }
+</script>
+</html>

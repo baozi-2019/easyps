@@ -1,0 +1,51 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>登陆</title>
+    <link type="text/css" th:href="@{/css/login.css}" rel="stylesheet"/>
+</head>
+<script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var cookies = document.cookie.split(';');
+        var userName = null;
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            var co = cookie.split('=');
+            if ("registerSuc" == co[0]) {
+                alert("[(#{register.Suc})]");
+            }
+        }
+    });
+</script>
+<body>
+<div class="loginBox" th:fragment="outline" id="outline">
+    <div class="loginText">
+        <p th:text="#{noLogin}" th:if="${#request.getAttribute('loginTip') == false}"></p>
+        <p th:text="#{register.Suc}" th:if="${#request.getAttribute('registerSuc') == 'suc'}"></p>
+        <form action="/loginCheck" method="post">
+            <table align="center">
+                <tr>
+                    <td>[(#{login.username})]:</td>
+                    <td><input type="text" name="userName"></td>
+                </tr>
+                <tr>
+                    <td>[(#{login.password})]:</td>
+                    <td><input type="password" name="userPassword"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><input type="submit" id="submit" th:value="#{login.signin}"
+                                                          value="提交"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div id="empty"></div>
+    <a th:href="@{/reg/register}">[[#{register}]]</a><br><br>
+    <a th:href="@{/login.html(lang='zh_CN')}">中文</a>
+    <a th:href="@{/login.html(lang='en_US')}">English</a>
+</div>
+</body>
+</html>

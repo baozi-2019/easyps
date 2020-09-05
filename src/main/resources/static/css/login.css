@@ -1,0 +1,34 @@
+/* CSS Document */
+td {
+    line-height: 2em;
+}
+
+#submit {
+    height: 2em;
+    width: 5em;
+}
+
+
+#empty {
+    height: 0.5em;
+}
+
+.loginBox {
+    background: #ffed2c;
+    margin: 100px auto;
+    padding: 10%;
+    width: 70%;
+    height: 50%;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.loginText {
+    margin: auto;
+    width: auto;
+}
+
+body {
+    font: normal 100% Helvetica, Arial, sans-serif;
+    font-size: larger;
+}
